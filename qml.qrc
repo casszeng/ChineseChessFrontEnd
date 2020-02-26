@@ -3,6 +3,7 @@
         <file>main.qml</file>
         <file>Board.qml</file>
         <file>ChessPiece.qml</file>
+        <file>Game.qml</file>
     </qresource>
     <qresource prefix="/board">
         <file>Images/chessBoard.png</file>
@@ -22,5 +23,12 @@
         <file>Images/hongxiang.png</file>
         <file>Images/jiang.png</file>
         <file>Images/zu.png</file>
+    </qresource>
+    <qresource prefix="/background">
+        <file>Images/background.png</file>
+    </qresource>
+    <qresource prefix="/startButton">
+        <file>Images/clickedStartbutton.png</file>
+        <file>Images/start-button.png</file>
     </qresource>
 </RCC>
