@@ -7,4 +7,14 @@ Item {
 
         anchors.fill: parent
     }
+
+    function getRoll(x)
+    {
+        return (x - chessBoard.x) / (chessBoard.width / 9);
+    }
+
+    function getColumn(y)
+    {
+        return (y - chessBoard.y) / (chessBoard.width / 10);
+    }
 }

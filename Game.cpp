@@ -1,8 +1,15 @@
+#include "CheRule.h"
 #include "Game.h"
 
 Game::Game(QObject *parent) : QObject(parent)
 {
-
+    m_rules[ChessPiece::CHE] = new CheRule();
+    m_rules[ChessPiece::MA] = new CheRule();
+    m_rules[ChessPiece::XIANG] = new CheRule();
+    m_rules[ChessPiece::PAO] = new CheRule();
+    m_rules[ChessPiece::ZU] = new CheRule();
+    m_rules[ChessPiece::SHI] = new CheRule();
+    m_rules[ChessPiece::JIANG] = new CheRule();
 }
 
 void Game::initNewGame()
@@ -41,6 +48,19 @@ void Game::initNewGame()
     m_chessPieces.push_back(new ChessPiece("qrc:/chessPieces/Images/zu.png", ChessPiece::ZU, ChessPiece::BLACK, 3, 4));
     m_chessPieces.push_back(new ChessPiece("qrc:/chessPieces/Images/zu.png", ChessPiece::ZU, ChessPiece::BLACK, 3, 6));
     m_chessPieces.push_back(new ChessPiece("qrc:/chessPieces/Images/zu.png", ChessPiece::ZU, ChessPiece::BLACK, 3, 8));
+
+    for(int i = 0; i < 10; ++i)
+    {
+        for(int j = 0; j < 9; ++j)
+        {
+            m_board[i][j] = nullptr;
+        }
+    }
+
+    for(auto chess: m_chessPieces)
+    {
+        m_board[chess->roll()][chess->column()] = chess;
+    }
 }
 
 QString Game::src(int index)
@@ -59,6 +79,15 @@ int Game::role(int index)
         return ChessPiece::ERROR;
     }
     return m_chessPieces[index]->role();
+}
+
+bool Game::alive(int index)
+{
+    if(index > 31)
+    {
+        return false;
+    }
+    return m_chessPieces[index]->alive();
 }
 
 int Game::side(int index)
@@ -86,6 +115,37 @@ int Game::column(int index)
         return -1;
     }
     return m_chessPieces[index]->column();
+}
+
+bool Game::checkMove(int fromr, int tor, int fromc, int toc)
+{
+    int result = 0;
+    for(auto chess: m_chessPieces)
+    {
+        if(chess->roll() == fromr && chess->column() == fromc)
+        {
+            result = m_rules[chess->role()]->checkMove(chess, m_board, tor, toc);
+            if(result == 2)
+            {
+                chess->setRoll(tor);
+                chess->setColumn(toc);
+                m_board[fromr][fromc] = nullptr;
+                m_board[tor][toc]->setAlive(false);
+                m_board[tor][toc] = chess;
+
+            }
+            else if(result == 1)
+            {
+                chess->setRoll(tor);
+                chess->setColumn(toc);
+                m_board[fromr][fromc] = nullptr;
+                m_board[tor][toc] = chess;
+            }
+            break;
+        }
+    }
+
+    return result != 0;
 }
 
 

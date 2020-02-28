@@ -20,19 +20,22 @@ public:
     explicit ChessPiece(QString src, Role role, Side side, int roll, int column, QObject *parent = nullptr);
 
     Q_INVOKABLE QString src() const;
-    Q_INVOKABLE void setSrc(const QString &src);
+    Q_INVOKABLE void    setSrc( const QString   &src);
 
-    Q_INVOKABLE int role() const;
-    Q_INVOKABLE void setRole(const Role &role);
+    Q_INVOKABLE int     role() const;
+    Q_INVOKABLE void    setRole(const Role      &role);
 
-    Q_INVOKABLE int side() const;
-    Q_INVOKABLE void setSide(const Side &side);
+    Q_INVOKABLE int     side() const;
+    Q_INVOKABLE void    setSide(const Side      &side);
 
-    Q_INVOKABLE int roll() const;
-    Q_INVOKABLE void setRoll(int value);
+    Q_INVOKABLE int     roll() const;
+    Q_INVOKABLE void    setRoll(      int       value);
 
-    Q_INVOKABLE int column() const;
-    Q_INVOKABLE void setColumn(int value);
+    Q_INVOKABLE int     column() const;
+    Q_INVOKABLE void    setColumn(    int       value);
+
+    Q_INVOKABLE bool    alive() const;
+    Q_INVOKABLE void    setAlive(     bool      value);
 
 signals:
 
@@ -43,6 +46,7 @@ private:
     //Position of the chess piece
     int m_roll;
     int m_column;
+    bool m_alive;
 };
 
 #endif // CHESSPIECE_H

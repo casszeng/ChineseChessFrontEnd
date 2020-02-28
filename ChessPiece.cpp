@@ -1,7 +1,8 @@
 #include "ChessPiece.h"
 
 ChessPiece::ChessPiece(QObject *parent)
-    : QObject(parent)
+    : QObject(parent),
+      m_alive(true)
 {
 
 }
@@ -64,4 +65,14 @@ int ChessPiece::column() const
 void ChessPiece::setColumn(int value)
 {
     m_column = value;
+}
+
+bool ChessPiece::alive() const
+{
+    return m_alive;
+}
+
+void ChessPiece::setAlive(bool value)
+{
+    m_alive = value;
 }

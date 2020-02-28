@@ -22,3 +22,6 @@ Using a picture to show the board, calculate the size of a block to put chess pi
 <li>piece will auto adjust location by using this equation: currentx - (currentx - boardx) % chesspiecewidth</li>
 <h3>Switching side and disable oppenet side</h3>
 <p>in game put a property called side and initialize it to 0 when starting a new game. increase it then mod 2 to get side, 0 for red, 1 for black. disables mouse area of opponent side</p>
+<h1>Day3 implementing rules</h1>
+<h3>move logic</h3>
+<p>use move checking in C++ to check move, if it return 0, then it's not movable, 1 for moving to a empty space, 2 for eating oppenent piece, after successful move change roll and column of the moving piece, swap side,after successful eating, decrease model of repeater by 1 and remove eaten chesspiece from vector</p>
