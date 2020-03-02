@@ -25,3 +25,13 @@ Using a picture to show the board, calculate the size of a block to put chess pi
 <h1>Day3 implementing rules</h1>
 <h3>move logic</h3>
 <p>use move checking in C++ to check move, if it return 0, then it's not movable, 1 for moving to a empty space, 2 for eating oppenent piece, after successful move change roll and column of the moving piece, swap side,after successful eating, decrease model of repeater by 1 and remove eaten chesspiece from vector</p>
+<h1>Day4 refactor chess and board</h1>
+<p>Board will return roll and column information on press and released. Will return selected or drag and dropped point based on if roll and column changed on press and released</p>
+<p>Dynamically create chess pieces to the ui so that it can be deleted after each eating</p>
+<h1>Day5 move logic to javascript</h1>
+<p>Moving chesspieces logic to javascript as javascript is more than enough to do this, refactor dynamic generation of chesspieces</p>
+<h1>Day6 move configuration</h1>
+<p>There are two types of move, drag to move and click to move</p>
+<h3>click to move</h3>
+<li>click a piece</li>
+<li>click a piece or board</li>

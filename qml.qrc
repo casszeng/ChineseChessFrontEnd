@@ -1,28 +1,13 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
-        <file>Board.qml</file>
         <file>ChessPiece.qml</file>
+        <file>ChessPiecePaintManager.js</file>
         <file>Game.qml</file>
+        <file>Board.qml</file>
     </qresource>
     <qresource prefix="/board">
         <file>Images/chessBoard.png</file>
-    </qresource>
-    <qresource prefix="/chessPieces">
-        <file>Images/bing.png</file>
-        <file>Images/heiche.png</file>
-        <file>Images/heima.png</file>
-        <file>Images/heipao.png</file>
-        <file>Images/heishi.png</file>
-        <file>Images/heixiang.png</file>
-        <file>Images/hongche.png</file>
-        <file>Images/hongma.png</file>
-        <file>Images/hongpao.png</file>
-        <file>Images/hongshi.png</file>
-        <file>Images/hongshuai.png</file>
-        <file>Images/hongxiang.png</file>
-        <file>Images/jiang.png</file>
-        <file>Images/zu.png</file>
     </qresource>
     <qresource prefix="/background">
         <file>Images/background.png</file>
@@ -30,5 +15,21 @@
     <qresource prefix="/startButton">
         <file>Images/clickedStartbutton.png</file>
         <file>Images/start-button.png</file>
+    </qresource>
+    <qresource prefix="/chessPieces">
+        <file>Images/heiBing.png</file>
+        <file>Images/heiChe.png</file>
+        <file>Images/heiJiang.png</file>
+        <file>Images/heiMa.png</file>
+        <file>Images/heiPao.png</file>
+        <file>Images/heiShi.png</file>
+        <file>Images/heiXiang.png</file>
+        <file>Images/hongBing.png</file>
+        <file>Images/hongChe.png</file>
+        <file>Images/hongJiang.png</file>
+        <file>Images/hongMa.png</file>
+        <file>Images/hongPao.png</file>
+        <file>Images/hongShi.png</file>
+        <file>Images/hongXiang.png</file>
     </qresource>
 </RCC>
