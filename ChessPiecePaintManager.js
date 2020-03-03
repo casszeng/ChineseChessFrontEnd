@@ -1,52 +1,48 @@
 class Chess
 {
-    constructor(source, role, side, roll, column, alive)
+    constructor(source, roll, column)
     {
         this.source = source;
-        this.role = role;
-        this.side = side;
         this.roll = roll;
         this.column = column;
-        this.alive = alive;
     }
 }
 
-
 let board = new Array(90);
 let array = [
-            new Chess("qrc:/chessPieces/Images/hongChe.png",    "Che",      0, 9, 0, true),
-            new Chess("qrc:/chessPieces/Images/hongChe.png",    "Che",      0, 9, 8, true),
-            new Chess("qrc:/chessPieces/Images/hongMa.png",     "Ma",       0, 9, 1, true),
-            new Chess("qrc:/chessPieces/Images/hongMa.png",     "Ma",       0, 9, 7, true),
-            new Chess("qrc:/chessPieces/Images/hongXiang.png",  "Xiang",    0, 9, 2, true),
-            new Chess("qrc:/chessPieces/Images/hongXiang.png",  "Xiang",    0, 9, 6, true),
-            new Chess("qrc:/chessPieces/Images/hongShi.png",    "Shi",      0, 9, 3, true),
-            new Chess("qrc:/chessPieces/Images/hongShi.png",    "Shi",      0, 9, 5, true),
-            new Chess("qrc:/chessPieces/Images/hongJiang.png",  "Jiang",    0, 9, 4, true),
-            new Chess("qrc:/chessPieces/Images/hongPao.png",    "Pao",      0, 7, 1, true),
-            new Chess("qrc:/chessPieces/Images/hongPao.png",    "Pao",      0, 7, 7, true),
-            new Chess("qrc:/chessPieces/Images/hongBing.png",       "Bing",     0, 6, 0, true),
-            new Chess("qrc:/chessPieces/Images/hongBing.png",       "Bing",     0, 6, 2, true),
-            new Chess("qrc:/chessPieces/Images/hongBing.png",       "Bing",     0, 6, 4, true),
-            new Chess("qrc:/chessPieces/Images/hongBing.png",       "Bing",     0, 6, 6, true),
-            new Chess("qrc:/chessPieces/Images/hongBing.png",       "Bing",     0, 6, 8, true),
+            new Chess("qrc:/chessPieces/Images/hongChe.png",    9, 0),
+            new Chess("qrc:/chessPieces/Images/hongChe.png",    9, 8),
+            new Chess("qrc:/chessPieces/Images/hongMa.png",     9, 1),
+            new Chess("qrc:/chessPieces/Images/hongMa.png",     9, 7),
+            new Chess("qrc:/chessPieces/Images/hongXiang.png",  9, 2),
+            new Chess("qrc:/chessPieces/Images/hongXiang.png",  9, 6),
+            new Chess("qrc:/chessPieces/Images/hongShi.png",    9, 3),
+            new Chess("qrc:/chessPieces/Images/hongShi.png",    9, 5),
+            new Chess("qrc:/chessPieces/Images/hongJiang.png",  9, 4),
+            new Chess("qrc:/chessPieces/Images/hongPao.png",    7, 1),
+            new Chess("qrc:/chessPieces/Images/hongPao.png",    7, 7),
+            new Chess("qrc:/chessPieces/Images/hongBing.png",   6, 0),
+            new Chess("qrc:/chessPieces/Images/hongBing.png",   6, 2),
+            new Chess("qrc:/chessPieces/Images/hongBing.png",   6, 4),
+            new Chess("qrc:/chessPieces/Images/hongBing.png",   6, 6),
+            new Chess("qrc:/chessPieces/Images/hongBing.png",   6, 8),
 
-            new Chess("qrc:/chessPieces/Images/heiChe.png",     "Che",      1, 0, 0, true),
-            new Chess("qrc:/chessPieces/Images/heiChe.png",     "Che",      1, 0, 8, true),
-            new Chess("qrc:/chessPieces/Images/heiMa.png",      "Ma",       1, 0, 1, true),
-            new Chess("qrc:/chessPieces/Images/heiMa.png",      "Ma",       1, 0, 7, true),
-            new Chess("qrc:/chessPieces/Images/heiXiang.png",   "Xiang",    1, 0, 2, true),
-            new Chess("qrc:/chessPieces/Images/heiXiang.png",   "Xiang",    1, 0, 6, true),
-            new Chess("qrc:/chessPieces/Images/heiShi.png",     "Shi",      1, 0, 3, true),
-            new Chess("qrc:/chessPieces/Images/heiShi.png",     "Shi",      1, 0, 5, true),
-            new Chess("qrc:/chessPieces/Images/heiJiang.png",      "Jiang",    1, 0, 4, true),
-            new Chess("qrc:/chessPieces/Images/heiPao.png",     "Pao",      1, 2, 1, true),
-            new Chess("qrc:/chessPieces/Images/heiPao.png",     "Pao",      1, 2, 7, true),
-            new Chess("qrc:/chessPieces/Images/heiBing.png",         "Bing",     1, 3, 0, true),
-            new Chess("qrc:/chessPieces/Images/heiBing.png",         "Bing",     1, 3, 2, true),
-            new Chess("qrc:/chessPieces/Images/heiBing.png",         "Bing",     1, 3, 4, true),
-            new Chess("qrc:/chessPieces/Images/heiBing.png",         "Bing",     1, 3, 6, true),
-            new Chess("qrc:/chessPieces/Images/heiBing.png",         "Bing",     1, 3, 8, true)
+            new Chess("qrc:/chessPieces/Images/heiChe.png",     0, 0),
+            new Chess("qrc:/chessPieces/Images/heiChe.png",     0, 8),
+            new Chess("qrc:/chessPieces/Images/heiMa.png",      0, 1),
+            new Chess("qrc:/chessPieces/Images/heiMa.png",      0, 7),
+            new Chess("qrc:/chessPieces/Images/heiXiang.png",   0, 2),
+            new Chess("qrc:/chessPieces/Images/heiXiang.png",   0, 6),
+            new Chess("qrc:/chessPieces/Images/heiShi.png",     0, 3),
+            new Chess("qrc:/chessPieces/Images/heiShi.png",     0, 5),
+            new Chess("qrc:/chessPieces/Images/heiJiang.png",   0, 4),
+            new Chess("qrc:/chessPieces/Images/heiPao.png",     2, 1),
+            new Chess("qrc:/chessPieces/Images/heiPao.png",     2, 7),
+            new Chess("qrc:/chessPieces/Images/heiBing.png",    3, 0),
+            new Chess("qrc:/chessPieces/Images/heiBing.png",    3, 2),
+            new Chess("qrc:/chessPieces/Images/heiBing.png",    3, 4),
+            new Chess("qrc:/chessPieces/Images/heiBing.png",    3, 6),
+            new Chess("qrc:/chessPieces/Images/heiBing.png",    3, 8)
         ];
 
 var component = null;
@@ -128,5 +124,20 @@ function deletePiece(roll, column)
         board[index(roll, column)].destroy();
         board[index(roll, column)] = null;
         console.log("destory")
+    }
+}
+
+function highlightChosen(roll, column)
+{
+    for(var i = 0; i < 90; ++i)
+    {
+        if(board[i] !== null)
+        {
+            board[i].glowRadius = 0;
+            if(i === index(roll, column))
+            {
+                board[i].glowRadius = 4;
+            }
+        }
     }
 }

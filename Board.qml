@@ -19,7 +19,7 @@ Item {
             column = getColumn(mouse.x)
             console.log(roll)
             console.log(column)
-            if(chosenRoll !== -1 && chosenColumn !== -1 && chosenRoll !== roll && chosenColumn !== column)
+            if(chosenRoll !== -1 && chosenColumn !== -1 && (chosenRoll !== roll || chosenColumn !== column))
             {
                 movePiece(chosenRoll, chosenColumn, roll, column);
                 setChosenRoll(-1);

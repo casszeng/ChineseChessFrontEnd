@@ -1,11 +1,14 @@
 import QtQuick 2.0
+import QtGraphicalEffects 1.12
 
 Item {
+    id: chessPieceRoot
     width: parent.width / 9
     height: parent.height / 10
     property string source
     property int    roll
     property int    column
+    property int    glowRadius: 0
 
     x: column * (parent.width / 9)
     y: roll * (parent.height / 10)
@@ -15,6 +18,14 @@ Item {
         source:         parent.source
         anchors.fill:   parent
     }
+
+    Glow {
+           anchors.fill: chessImage
+           radius: chessPieceRoot.glowRadius
+           samples: 4
+           color: "red"
+           source: chessImage
+       }
 
     MouseArea
     {
@@ -31,9 +42,17 @@ Item {
             toColumn = getColumn(parent.x  + parent.width / 2);
             if(roll === toRoll && toColumn === column)
             {
-                if(fromRoll !== -1 && fromColumn !== -1 && fromRoll !== roll && fromColumn !== column)
+                if(fromRoll !== -1 && fromColumn !== -1 && (fromRoll !== roll || fromColumn !== column))
                 {
-                    movePiece(fromRoll, fromColumn, roll, column);
+                    if(movePiece(fromRoll, fromColumn, roll, column) === false)
+                    {
+                        adjustX.from = parent.x
+                        adjustX.to = toColumn * (parent.width)
+                        adjustY.from = parent.y
+                        adjustY.to = toRoll * (parent.height)
+                        adjust.start()
+                    }
+
                     setChosenRoll(-1);
                     setChosenColumn(-1);
                 }
@@ -41,13 +60,53 @@ Item {
                 {
                     setChosenRoll(toRoll);
                     setChosenColumn(toColumn);
+                    adjustX.from = parent.x
+                    adjustX.to = toColumn * (parent.width)
+                    adjustY.from = parent.y
+                    adjustY.to = toRoll * (parent.height)
+                    adjust.start()
+                    chessPieceRoot.setGlowRadius();
                 }
             }
             else
             {
-                movePiece(roll, column, toRoll, toColumn);
+                if(movePiece(roll, column, toRoll, toColumn) === false)
+                {
+                    adjustX.from = parent.x
+                    adjustX.to = column * (parent.width)
+                    adjustY.from = parent.y
+                    adjustY.to = roll * (parent.height)
+                    adjust.start()
+                }
             }
+
         }
+    }
+
+    ParallelAnimation
+    {
+        id: adjust
+        NumberAnimation
+        {
+            id: adjustX
+            target: chessPieceRoot
+            property: "x"
+            duration: 2
+            easing.type: Easing.InOutQuad
+        }
+        NumberAnimation
+        {
+            id: adjustY
+            target: chessPieceRoot
+            property: "y"
+            duration: 2
+            easing.type: Easing.InOutQuad
+        }
+    }
+
+    function setGlowRadius()
+    {
+        parent.highlightChosen(chessPieceRoot.roll, chessPieceRoot.column);
     }
 
     function setChosenRoll(r)
@@ -71,7 +130,7 @@ Item {
 
     function movePiece(fromRoll, fromColumn, toRoll, toColumn)
     {
-        parent.movePiece(fromRoll, fromColumn, toRoll, toColumn);
+        return parent.movePiece(fromRoll, fromColumn, toRoll, toColumn);
     }
 
     function getRoll(y)

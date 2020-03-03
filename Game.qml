@@ -45,8 +45,14 @@ Item{
         anchors.left: parent.left
         property int chosenRoll: -1
         property int chosenColumn: -1
+        property int side: 0
         Board{
             anchors.fill: parent
+        }
+
+        function highlightChosen(chosenRoll, chosenColumn)
+        {
+            ChessPiecePaintManager.highlightChosen(chosenRoll, chosenColumn);
         }
 
         function movePiece(fromRoll, fromColumn, toRoll, toColumn)

@@ -15,5 +15,7 @@ int main(int argc, char *argv[])
             QCoreApplication::exit(-1);
     }, Qt::QueuedConnection);
     engine.load(url);
+
+    //    engine.globalObject().setProperty("gamePlay", engine.newQObject(new Game));
     return app.exec();
 }
