@@ -27,6 +27,7 @@ Item{
             anchors.fill: parent
             onPressed:
             {
+                gamePlay.init();
                 ChessPiecePaintManager.initialization();
                 startbutton.source = "qrc:/startButton/Images/clickedStartbutton.png"
             }
@@ -46,6 +47,7 @@ Item{
         property int chosenRoll: -1
         property int chosenColumn: -1
         property int side: 0
+
         Board{
             anchors.fill: parent
         }
@@ -57,7 +59,26 @@ Item{
 
         function movePiece(fromRoll, fromColumn, toRoll, toColumn)
         {
-            ChessPiecePaintManager.movePiece(fromRoll, fromColumn, toRoll, toColumn);
+            if(gamePlay.checkMove(game.side, fromRoll, fromColumn, toRoll, toColumn))
+            {
+                ChessPiecePaintManager.movePiece(fromRoll, fromColumn, toRoll, toColumn);
+                if(gamePlay.checkWin(game.side))
+                {
+                    gamePlay.init();
+                    ChessPiecePaintManager.initialization();
+                }
+                else
+                {
+                    ++game.side;
+                    game.side %= 2;
+                }
+
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

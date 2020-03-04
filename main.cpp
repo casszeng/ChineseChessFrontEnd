@@ -1,5 +1,6 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
+#include "Game.h"
 
 int main(int argc, char *argv[])
 {
@@ -16,6 +17,7 @@ int main(int argc, char *argv[])
     }, Qt::QueuedConnection);
     engine.load(url);
 
-    //    engine.globalObject().setProperty("gamePlay", engine.newQObject(new Game));
+    engine.globalObject().setProperty("gamePlay", engine.newQObject(new Game));
+
     return app.exec();
 }
