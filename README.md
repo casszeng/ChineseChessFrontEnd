@@ -35,3 +35,5 @@ Using a picture to show the board, calculate the size of a block to put chess pi
 <h3>click to move</h3>
 <li>click a piece</li>
 <li>click a piece or board</li>
+<h1>Day7 finishing pvp part of the game</h1>
+<p>Finished implementing the pvp on a single screen part of the game. Game will only auto reset after one side wins. AI is next step</p>
