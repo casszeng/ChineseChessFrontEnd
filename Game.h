@@ -20,7 +20,7 @@ public:
     bool                        paoCheckMove(   int fromRoll, int fromColumn, int toRoll, int toColumn);
     bool                        bingCheckMove(  int fromRoll, int fromColumn, int toRoll, int toColumn);
     void                        movePiece(      int fromRoll, int fromColumn, int toRoll, int toColumn);
-
+    Piece*                      chessBoard(     int roll,     int column);
 signals:
 private:
     QVector<Piece*> m_pieceCollection;

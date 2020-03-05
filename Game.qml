@@ -62,18 +62,22 @@ Item{
             if(gamePlay.checkMove(game.side, fromRoll, fromColumn, toRoll, toColumn))
             {
                 ChessPiecePaintManager.movePiece(fromRoll, fromColumn, toRoll, toColumn);
-                if(gamePlay.checkWin(game.side))
+                if(gamePlay.checkWin(0))
                 {
                     gamePlay.init();
                     ChessPiecePaintManager.initialization();
                 }
                 else
                 {
-                    ++game.side;
-                    game.side %= 2;
+                    ChessPiecePaintManager.movePiecebyIndex(computer.moveFrom(gamePlay), computer.moveTo(gamePlay));
+                    if(gamePlay.checkWin(1))
+                    {
+                        gamePlay.init();
+                        ChessPiecePaintManager.initialization();
+                    }
                 }
-
                 return true;
+
             }
             else
             {

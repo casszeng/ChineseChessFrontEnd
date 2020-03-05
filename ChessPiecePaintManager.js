@@ -117,6 +117,30 @@ function movePiece(fromRoll, fromColumn, toRoll, toColumn)
 
 }
 
+function movePiecebyIndex(from, to)
+{
+
+    deletePiecebyIndex(to);
+    if(board[from] !== null)
+    {
+        board[to] = board[from];
+        board[from] = null;
+        board[to].roll = to / 9;
+        board[to].column = to % 9;
+    }
+
+}
+
+function deletePiecebyIndex(i)
+{
+    if(board[i] !== null)
+    {
+        board[i].destroy();
+        board[i] = null;
+        console.log("destory")
+    }
+}
+
 function deletePiece(roll, column)
 {
     if(board[index(roll, column)] !== null)

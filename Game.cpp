@@ -462,3 +462,8 @@ void Game::movePiece(int fromRoll, int fromColumn, int toRoll, int toColumn)
         m_chessBoard[toRoll][toColumn]->setColumn(toColumn);
     }
 }
+
+Piece *Game::chessBoard(int roll, int column)
+{
+    return m_chessBoard[roll][column];
+}
